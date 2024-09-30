@@ -1,6 +1,6 @@
 {
   "name": "@deepcrawl/html-torch",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Burn the rest of the HTML, leaving only the tags that are meaningful to LLM.",
   "type": "module",
   "source": "src/html-torch.ts",
@@ -45,5 +45,9 @@
     "hooks": {
       "before:init": "npm run build && npm run lint && npm run test"
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
