@@ -1,6 +1,6 @@
 {
-  "name": "html-torch",
-  "version": "2.0.1",
+  "name": "@deepcrawl/html-torch",
+  "version": "0.0.1",
   "description": "Burn the rest of the HTML, leaving only the tags that are meaningful to LLM.",
   "type": "module",
   "source": "src/html-torch.ts",

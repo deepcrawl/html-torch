@@ -1,0 +1,38 @@
+name: Publish package
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@deepcrawl'
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Clean up existing .npmrc
+        run: |
+          if [ -n "$NPM_CONFIG_USERCONFIG" ] && [ -f "$NPM_CONFIG_USERCONFIG" ]; then
+            rm -f $NPM_CONFIG_USERCONFIG
+          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          registry-url: 'https://registry.npmjs.org'
+      - name: Publish to npmjs.org
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
