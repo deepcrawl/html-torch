@@ -1,0 +1,49 @@
+{
+  "name": "html-torch",
+  "version": "2.0.1",
+  "description": "Burn the rest of the HTML, leaving only the tags that are meaningful to LLM.",
+  "type": "module",
+  "source": "src/html-torch.ts",
+  "exports": {
+    "require": "./dist/html-torch.cjs",
+    "default": "./dist/html-torch.modern.js"
+  },
+  "types": "./dist/html-torch.d.ts",
+  "main": "./dist/html-torch.cjs",
+  "module": "./dist/html-torch.module.cjs",
+  "unpkg": "./dist/html-torch.umd.js",
+  "scripts": {
+    "build": "microbundle build",
+    "dev": "microbundle watch",
+    "test": "jest",
+    "lint": "prettier --write ./src/**/*",
+    "release": "release-it"
+  },
+  "keywords": [
+    "html",
+    "torch",
+    "llm",
+    "lightweight",
+    "markup"
+  ],
+  "author": "hmmhmmhm",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/prettier": "^2.7.3",
+    "jest": "^29.7.0",
+    "microbundle": "^0.15.1",
+    "prettier": "^3.2.5",
+    "release-it": "^17.1.1",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "release-it": {
+    "hooks": {
+      "before:init": "npm run build && npm run lint && npm run test"
+    }
+  }
+}
