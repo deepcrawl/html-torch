@@ -1,12 +1,18 @@
 {
   "name": "@deepcrawl/html-torch",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Burn the rest of the HTML, leaving only the tags that are meaningful to LLM.",
   "type": "module",
   "source": "src/html-torch.ts",
   "exports": {
-    "require": "./dist/html-torch.cjs",
-    "default": "./dist/html-torch.modern.js"
+    "require": {
+      "types": "./dist/html-torch.d.ts",
+      "default": "./dist/html-torch.cjs"
+    },
+    "import": {
+      "types": "./dist/html-torch.d.ts",
+      "default": "./dist/html-torch.modern.js"
+    }
   },
   "types": "./dist/html-torch.d.ts",
   "main": "./dist/html-torch.cjs",
